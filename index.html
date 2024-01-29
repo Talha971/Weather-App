@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="">Weather App</h1>
+    <!-- <input type="text" id="inp" />
+    <button id="btn">Submit</button> -->
+    <script>
+
+      // "http://api.weatherapi.com/v1/current.json?key=fa7e6e9d66b843a3ab8125723242901&q=Karachi&aqi=no"
+
+      document.write(
+        `<input type="text" id="inp" /><button id="btn">Search</button>`
+      );
+      document.getElementById("btn").addEventListener("click", () => {
+        let input = document.getElementById("inp").value;
+        console.log(input);
+
+        //   let city = prompt("Enter City name:");
+        fetch(
+          `http://api.weatherapi.com/v1/current.json?key=fa7e6e9d66b843a3ab8125723242901&q=${input}&aqi=no`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            let a = data.current.condition.icon;
+            console.log(data);
+            console.log(data.current);
+
+            document.write(`
+            City: ${data.location.name}<br>
+            Country: ${data.location.country}<br>
+            Temperature: ${data.current.temp_c} Centigrade<br>
+
+            Wind: ${data.current.wind_kph} km/h<br>
+            <img src="${data.current.condition.icon}" alt="kjkAJSLK"><br>
+            Condition: ${data.current.condition.text}<br>
+
+            `);
+          });
+      });
+    </script>
+  </body>
+</html>
