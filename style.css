@@ -1,7 +1,6 @@
 #main_box {
-  border: solid 2px black;
+  border: solid 2px white;
   text-align: center;
-  /* background-color: black; */
   background-image: url("image/weather\ app\ bg.jpg");
   border-radius: 10px;
   padding: 10px;
